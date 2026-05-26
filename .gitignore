@@ -1,0 +1,14 @@
+# Build artifacts
+reduction
+*.o
+*.ncu-rep
+*.nvprof
+*.qdrep
+
+# OS
+.DS_Store
+*.swp
+
+# Editor
+.vscode/
+.idea/
