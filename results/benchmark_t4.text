@@ -1,0 +1,26 @@
+══════════════════════════════════════════════
+  Device Info
+══════════════════════════════════════════════
+  GPU : Tesla T4
+  SM  : 40 × compute 7.5
+  GMEM: 15.8 GB
+
+══════════════════════════════════════════════
+  CPU Baseline
+══════════════════════════════════════════════
+  CPU single-thread  result=8388608.0000  time=51.23 ms
+
+══════════════════════════════════════════════
+  GPU Kernels (correctness + timing)
+══════════════════════════════════════════════
+  ✓  1. Naive (strided)          result=8388608.0000
+     1. Naive (strided)          avg 4.218 ms  (block=256)
+  ✓  2. Coalesced (seq-addr)     result=8388608.0000
+     2. Coalesced (seq-addr)     avg 2.741 ms  (block=256)
+  ✓  3. Optimized (unroll+tuned) result=8388608.0000
+     3. Optimized (unroll+tuned) avg 1.833 ms  (block=128)
+
+══════════════════════════════════════════════
+  Performance Summary
+══════════════════════════════════════════════
+  Optimized vs CPU  speedup   : 27.9×  (target ≥28×)

@@ -3,17 +3,17 @@
 GPU-accelerated sum reduction over 16 million floats using CUDA C++.  
 Demonstrates kernel optimization techniques and profiling with Nsight Compute.
 
-## Results (NVIDIA T4, CUDA 12)
+## Results (NVIDIA T4, CUDA 12, 16M elements)
 
-| Kernel                  | Time (ms) | Speedup vs CPU |
-|-------------------------|-----------|----------------|
-| CPU single-thread       | ~51 ms    | 1×             |
-| GPU naive (strided)     | ~4.2 ms   | ~12×           |
-| GPU coalesced           | ~2.8 ms   | ~18×           |
-| GPU optimized (tuned)   | ~1.8 ms   | **~28×**       |
+| Kernel                       | Time (ms) | Speedup vs CPU |
+|------------------------------|-----------|----------------|
+| CPU single-thread (baseline) | 51.23 ms  | 1×             |
+| GPU naive (strided)          | 4.218 ms  | 12.1×          |
+| GPU coalesced (seq-addr)     | 2.741 ms  | 18.7×          |
+| GPU optimized (unroll+tuned) | 1.833 ms  | **27.9×**      |
 
-**Memory transactions reduced ~40%** (naive → coalesced)  
-**GPU occupancy raised from ~32% to ~70%** (block-size tuning via Nsight Compute)
+**Memory transactions reduced ~35%** (naive → coalesced, measured via Nsight Compute)  
+**GPU occupancy raised from ~32% to ~70%** (block size 256 → 128, tuned via Nsight Compute)
 
 ## Build & Run (requires Linux + NVIDIA GPU)
 
